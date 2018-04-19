@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Field from './Field';
 
 const getArr10Obj = () => Array.from(new Array(10), () => ({}));
 
 const field = [
   [
-    {},
     {},
     {},
     {},
@@ -32,32 +32,10 @@ class SeaWar extends React.Component {
   render() {
     const { theme } = this.props;
 
-    console.log(field);
     return (
-      <div className={theme.field}>
-        {
-          field.map((row, ri) => {
-            return (
-              <div
-                key={ri}
-                className={theme.row}
-              >
-                {
-                  row.map((cell, ci) => {
-                    return (
-                      <div
-                        key={ci}
-                        className={theme.cell}
-                      >
-                        {`${ri}:${ci}`}
-                      </div>
-                    );
-                  })
-                }
-              </div>
-            );
-          })
-        }
+      <div className={theme.battle_zone}>
+        <Field theme={theme} field={field} />
+        <Field theme={theme} field={field} />
       </div>
     );
   }
@@ -65,9 +43,7 @@ class SeaWar extends React.Component {
 
 SeaWar.propTypes = {
   theme: PropTypes.shape({
-    field: PropTypes.string,
-    row: PropTypes.string,
-    cell: PropTypes.string
+    battle_zone: PropTypes.string.isRequired
   }).isRequired
 };
 

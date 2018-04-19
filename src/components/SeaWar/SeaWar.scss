@@ -1,11 +1,4 @@
-.field {
-  background: blue;
-}
-
-.row {
-  background: green;
-}
-
-.cell {
-  background: red;
+.battle_zone {
+  display: flex;
+  justify-content: space-around;
 }
