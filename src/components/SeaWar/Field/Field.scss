@@ -2,12 +2,10 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  background: blue;
 }
 
 .row {
   display: flex;
-  background: green;
 }
 
 .cell {
@@ -15,5 +13,9 @@
   height: 50px;
   border: 1px solid black;
   margin: 1px;
-  background: red;
+  background: white;
+}
+
+.ship {
+  background: green;
 }

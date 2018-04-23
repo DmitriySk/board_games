@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classname';
+import { combineFieldWithShips } from '../helpers';
 
 class Field extends React.Component {
   render() {
-    const { theme, field } = this.props;
+    const { theme, field, ships } = this.props;
+    const combinedField = combineFieldWithShips(field, ships);
 
     return (
       <div className={theme.field}>
         {
-          field.map((row, ri) => {
+          combinedField.map((row, ri) => {
             return (
               <div
                 key={ri}
@@ -19,7 +22,10 @@ class Field extends React.Component {
                     return (
                       <div
                         key={ci}
-                        className={theme.cell}
+                        className={cn({
+                          [theme.cell]: true,
+                          [theme.ship]: cell.isShip
+                        })}
                       >
                         {`${ri}:${ci}`}
                       </div>
@@ -39,9 +45,15 @@ Field.propTypes = {
   theme: PropTypes.shape({
     field: PropTypes.string,
     row: PropTypes.string,
-    cell: PropTypes.string
+    cell: PropTypes.string,
+    ship: PropTypes.string
   }).isRequired,
-  field: PropTypes.array.isRequired
+  field: PropTypes.array.isRequired,
+  ships: PropTypes.array
+};
+
+Field.defaultProps = {
+  ships: []
 };
 
 export default Field;

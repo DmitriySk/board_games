@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Field from './Field';
+import ShipType from './ship-types';
+import OrientationType from './orientation-type';
 
 const getArr10Obj = () => Array.from(new Array(10), () => ({}));
 
@@ -28,6 +30,14 @@ const field = [
   getArr10Obj(),
 ];
 
+const ships = [
+  {
+    type: ShipType.BATTLESHIP.id,
+    coords: [1, 1],
+    orientation: OrientationType.VERTICAL.id
+  }
+];
+
 class SeaWar extends React.Component {
   render() {
     const { theme } = this.props;
@@ -35,7 +45,7 @@ class SeaWar extends React.Component {
     return (
       <div className={theme.battle_zone}>
         <Field theme={theme} field={field} />
-        <Field theme={theme} field={field} />
+        <Field theme={theme} field={field} ships={ships} />
       </div>
     );
   }
