@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import styles from './App.css';
-import SeaWar from './components/SeaWar';
+import SeaWar from '../SeaWar';
 
 class App extends Component {
   render() {
